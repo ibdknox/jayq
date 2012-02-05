@@ -8,9 +8,7 @@ When ClojureScript first came out, the prevailing wisdom was that since jQuery w
 with the Google Closure Compiler, we shouldn't be using it. So I set off to work on Pinot, a library
 that wrapped the goog.\* APIs. The journey was painful and frustrating, and before long I realized I was
 essentially rewriting parts of jQuery for no gain. Instead of doing that, I figured my time would be
-better spent building on top of the most battle hardened JS library out there.
-
-Before I started down this path though, I wanted to make sure that I had answers to all the arguments
+better spent building on top of the most battle hardened JS library out there. Before I started down this path though, I wanted to make sure that I had answers to all the arguments
 against using it. They were as follows:
 
 * It can't be compiled by the Closure compiler and means we can't use Advanced compilation.
