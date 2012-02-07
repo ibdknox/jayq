@@ -120,7 +120,7 @@
   (.delegate $elem parent ev func))
 
 (defn inner [$elem v]
-  (.innerHTML $elem v))
+  (.html $elem v))
 
 (defn empty [$elem]
   (.empty $elem))
