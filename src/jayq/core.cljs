@@ -1,18 +1,22 @@
 (ns jayq.core 
-  (:refer-clojure :exclude [val empty remove])
+  (:refer-clojure :exclude [val empty remove find])
   (:require [clojure.string :as string])
   (:use [jayq.util :only [map->js]]))
 
 (defn crate-meta [func]
   (.-prototype._crateGroup func))
 
-(def $ (fn [selector] 
-         (let [selector (cond
-                          (string? selector) selector
-                          (fn? selector) (str "[crateGroup=" (crate-meta selector) "]")
-                          (keyword? selector) (name selector)
-                          :else selector)]
-           (js/jQuery selector))))
+(defn ->selector [sel]
+  (cond
+    (string? sel) sel
+    (fn? sel) (str "[crateGroup=" (crate-meta sel) "]")
+    (keyword? sel) (name sel)
+    :else sel))
+
+(def $ (fn [sel & [context]] 
+         (if-not context
+           (js/jQuery (->selector sel))
+           (js/jQuery (->selector sel) context))))
 
 (extend-type js/jQuery
   ISeqable
@@ -75,6 +79,12 @@
       (. $elem (attr a))
       (. $elem (attr a v)))))
 
+(defn data [$elem k & [v]]
+  (let [k (name k)]
+    (if-not v
+      (. $elem (data k))
+      (. $elem (data k v)))))
+
 (defn add-class [$elem cl]
   (let [cl (name cl)]
     (.addClass $elem cl)))
@@ -113,11 +123,14 @@
 (defn bind [$elem ev func]
   (.bind $elem (name ev) func))
 
+(defn find [$elem selector]
+  (.find $elem (name selector)))
+
 (defn trigger [$elem ev]
   (.trigger $elem (name ev)))
 
-(defn delegate [$elem parent ev func]
-  (.delegate $elem parent ev func))
+(defn delegate [$elem sel ev func]
+  (.delegate $elem (->selector sel) (name ev) func))
 
 (defn inner [$elem v]
   (.html $elem v))
