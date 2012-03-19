@@ -39,6 +39,10 @@ for us to build exactly that.
 ## Usage
 
 ```clojure
+[jayq "0.1.0-alpha2"]
+```
+
+```clojure
 (ns myapp
   (:use [jayq.core :only [$ css inner]]))
 
