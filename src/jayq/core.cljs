@@ -87,6 +87,9 @@
       (. $elem (data k))
       (. $elem (data k v)))))
 
+(defn position [$elem]
+  (js->clj (.position $elem) :keywordize-keys true))
+
 (defn add-class [$elem cl]
   (let [cl (name cl)]
     (.addClass $elem cl)))
@@ -130,6 +133,9 @@
 
 (defn find [$elem selector]
   (.find $elem (name selector)))
+
+(defn clone [$elem]
+  (.clone $elem))
 
 (defn inner [$elem v]
   (.html $elem v))
@@ -197,3 +203,5 @@
         (->selector sel)
         handler))
 
+(defn prevent [e]
+  (.preventDefault e))

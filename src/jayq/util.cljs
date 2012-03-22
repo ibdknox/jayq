@@ -27,5 +27,3 @@
                (assoc m (clj->js k) (clj->js v))) {} x))
     (coll? x) (apply array (map clj->js x))
     :else x))
-  
-
