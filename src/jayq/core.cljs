@@ -98,6 +98,12 @@
   (let [cl (name cl)]
     (.removeClass $elem cl)))
 
+(defn after [$elem content]
+  (.after $elem content))
+
+(defn before [$elem content]
+  (.before $elem content))
+
 (defn append [$elem content]
   (.append $elem content))
 
