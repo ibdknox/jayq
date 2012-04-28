@@ -54,6 +54,21 @@ for us to build exactly that.
 
 ```
 
+## Compiling
+
+If you're using advanced Clojurescript compilation you'll need to reference the jquery externs file. Add this to your compilation options:
+
+```clojure
+
+  {
+    :optimizations :advanced
+    :externs ["externs/jquery.js"]
+    ...
+  }
+```
+
+Without this, you'l see errors like 'Object ... has no method XX'. See http://lukevanderhart.com/2011/09/30/using-javascript-and-clojurescript.html for more on externs.
+
 ## License
 
 Copyright (C) 2011 Chris Granger
