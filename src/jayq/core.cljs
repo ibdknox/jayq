@@ -55,9 +55,9 @@
 
   IReduce
   (-reduce [this f]
-    (ci-reduce coll f (first this) (count this)))
+    (ci-reduce this f))
   (-reduce [this f start]
-    (ci-reduce coll f start i)))
+    (ci-reduce this f start)))
 
 (set! jQuery.prototype.call
       (fn
