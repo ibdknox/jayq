@@ -98,6 +98,10 @@
   (let [cl (name cl)]
     (.removeClass $elem cl)))
 
+(defn toggle-class [$elem cl]
+  (let [cl (name cl)]
+    (.toggleClass $elem cl)))
+
 (defn append [$elem content]
   (.append $elem content))
 
