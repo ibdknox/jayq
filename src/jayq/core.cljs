@@ -55,9 +55,9 @@
 
   IReduce
   (-reduce [this f]
-    (ci-reduce coll f (first this) (count this)))
+    (ci-reduce this f))
   (-reduce [this f start]
-    (ci-reduce coll f start i)))
+    (ci-reduce this f start)))
 
 (set! jQuery.prototype.call
       (fn
@@ -81,6 +81,9 @@
       (. $elem (attr a))
       (. $elem (attr a v)))))
 
+(defn remove-attr [$elem a]
+  (.removeAttr $elem (name a)))
+
 (defn data [$elem k & [v]]
   (let [k (name k)]
     (if-not v
@@ -101,6 +104,16 @@
 (defn toggle-class [$elem cl]
   (let [cl (name cl)]
     (.toggleClass $elem cl)))
+
+(defn has-class [$elem cl]
+  (let [cl (name cl)]
+    (.hasClass $elem cl)))
+
+(defn after [$elem content]
+  (.after $elem content))
+
+(defn before [$elem content]
+  (.before $elem content))
 
 (defn append [$elem content]
   (.append $elem content))
@@ -138,6 +151,9 @@
 (defn find [$elem selector]
   (.find $elem (name selector)))
 
+(defn closest [$elem selector & [context]]
+  (.closest $elem selector context))
+
 (defn clone [$elem]
   (.clone $elem))
 
@@ -151,6 +167,9 @@
   (if v
     (.val $elem v)
     (. $elem (val))))
+
+(defn serialize [$elem]
+  (.serialize $elem))
 
 (defn queue [$elem callback]
   (. $elem (queue callback)))
@@ -167,12 +186,21 @@
                          :success callback})]
     (.ajax js/jQuery uri params)))
 
+(defn ajax
+  ([url settings]
+    (.ajax js/jQuery url (clj->js settings)))
+  ([settings]
+    (.ajax js/jQuery (clj->js settings))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Events
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defn bind [$elem ev func]
   (.bind $elem (name ev) func))
+
+(defn unbind [$elem ev & [func]]
+  (.unbind $elem (name ev) func))
 
 (defn trigger [$elem ev]
   (.trigger $elem (name ev)))
