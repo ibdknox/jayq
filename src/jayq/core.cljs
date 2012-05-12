@@ -67,8 +67,11 @@
 (defn anim [elem props dur]
   (.animate elem (clj->js props) dur))
 
-(defn text [$elem txt]
-  (.text $elem txt))
+(defn text
+  ([$elem]
+   (.text $elem))
+  ([$elem txt]
+    (.text $elem txt)))
 
 (defn css [$elem opts]
   (if (keyword? opts)
