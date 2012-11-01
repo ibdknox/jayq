@@ -39,7 +39,7 @@ for us to build exactly that.
 ## Usage
 
 ```clojure
-[jayq "0.1.0-alpha3"]
+[jayq "0.1.0-alpha4"]
 ```
 
 ```clojure
