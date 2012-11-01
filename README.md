@@ -54,7 +54,7 @@ for us to build exactly that.
 
 ```
 
-## Change note
+## Change log
 
 ### 0.2.0
 
