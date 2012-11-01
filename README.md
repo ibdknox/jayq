@@ -23,23 +23,23 @@ has a google CDN'd version of jquery on their machine. That means there's no ext
 to compile it. This also addresses the first part of the second one - there's nothing more to download.
 
 While it's true that if we used jQuery directly, all method calls would be left alone and could
-not be replaced with a minified name. With a wrapper, however, that happens exactly once per method and 
-all occurences of the wrapper will be munged. This means that at most we're talking about a difference 
-on the magnitude of bytes. If you need to optimize for size at that level, you shouldn't be using 
+not be replaced with a minified name. With a wrapper, however, that happens exactly once per method and
+all occurences of the wrapper will be munged. This means that at most we're talking about a difference
+on the magnitude of bytes. If you need to optimize for size at that level, you shouldn't be using
 CLJS anyways.
 
 Lastly, there's the argument that it won't lead to idiomatic usage. That's likely true if we use jQuery
 directly, but I'm not sure I really believe that's a valid argument. The same goes for Clojure if we use
 Java libraries directly all over the place. Wrappers, however, allow us to utilize all the functionality
 provided by these libraries, but still create Clojure idioms over top of them. There's no reason to ignore
-the most solid base out there, when we can just build greater abstractions on top of it. Do I think 
-jQuery is the pinnacle of the client side web? Not at all, but I do believe it provides a great foundation 
+the most solid base out there, when we can just build greater abstractions on top of it. Do I think
+jQuery is the pinnacle of the client side web? Not at all, but I do believe it provides a great foundation
 for us to build exactly that.
 
 ## Usage
 
 ```clojure
-[jayq "0.1.0-alpha4"]
+[jayq "0.2.0"]
 ```
 
 ```clojure
@@ -53,6 +53,18 @@ for us to build exactly that.
   (inner "Loading!"))
 
 ```
+
+## Change note
+
+### 0.2.0
+
+* `text/clojure` `text/edn` `application/clojure` `application/edn` mime types
+  are now read as clojure data before being passed to callbacks
+* `:edn` & `:clojure` dataType option support in $.ajax
+* Fixed bug affecting `clj->js` serialization of Persistent data
+  structure after the first chunk.
+* Improve coverage of jQuery API traversal & manipulation functions
+* Consistency issue on `closest` when used with keywords
 
 ## Compiling
 
