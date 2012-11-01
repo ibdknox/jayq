@@ -58,8 +58,9 @@ for us to build exactly that.
 
 ### 0.2.0
 
-* `text/clojure` `text/edn` `application/clojure` `application/edn` mime types
-  are now read as clojure data before being passed to callbacks
+* Possible breaking change: `jayq.core/ajax` responses with `text/clojure`
+  `text/edn` `application/clojure` `application/edn` mime types are
+  now read as clojure data before being passed to callbacks.
 * `:edn` & `:clojure` dataType option support in $.ajax
 * Fixed bug affecting `clj->js` serialization of Persistent data
   structure after the first chunk.
