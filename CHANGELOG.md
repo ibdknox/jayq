@@ -2,7 +2,7 @@
 
 ## 0.2.1
 
-* Removed extern file from the source, let the user grab the
+* Removed externs file from the source, let the user grab the
   appropriate file from the google-closure repository.
 * Replaced uses of `coll?` with `sequential?`
 
