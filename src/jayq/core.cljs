@@ -310,7 +310,7 @@
   (cond
     (keyword? e) (name e)
     (map? e) (clj->js e)
-    (coll? e) (string/join " " (map name e))
+    (sequential? e) (string/join " " (map name e))
     :else (throw (js/Error. (str "Unknown event type: " e)))))
 
 (defn on [$elem events & [sel data handler]]
