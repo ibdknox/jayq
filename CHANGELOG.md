@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.2
+
+* bugfix: revert previous commit replacing coll? with sequential?
+
 ## 0.2.1
 
 * Removed externs file from the source, let the user grab the
