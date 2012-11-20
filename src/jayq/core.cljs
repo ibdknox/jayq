@@ -334,3 +334,62 @@
 
 (defn prevent [e]
   (.preventDefault e))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Dimensions & Offset
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn height
+  ([$elem x]
+     (.height $elem x))
+  ([$elem]
+     (.height $elem)))
+
+(defn width
+  ([$elem x]
+     (.width $elem x))
+  ([$elem]
+     (.width $elem)))
+
+(defn inner-height
+  [$elem]
+  (.innerHeight $elem))
+
+(defn inner-width
+  [$elem]
+  (.innerWidth $elem))
+
+(defn outer-height
+  [$elem]
+  (.outerHeight $elem))
+
+(defn outer-width
+  [$elem]
+  (.outerWidth $elem))
+
+(defn offset
+  ([$elem coords]
+     (.offset (clj->js coords)))
+  ([$elem]
+     (.offset $elem)))
+
+(defn offset-parent
+  [$elem]
+  (.offsetParent $elem))
+
+(defn position
+  [$elem]
+  (.position $elem))
+
+(defn scroll-left
+  ([$elem x]
+     (.scrollLeft $elem x))
+  ([$elem]
+     (.scrollLeft $elem)))
+
+(defn scroll-top
+  ([$elem x]
+     (.scrollTop $elem x))
+  ([$elem]
+     (.scrollTop $elem)))
