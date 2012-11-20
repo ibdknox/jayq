@@ -10,6 +10,8 @@
 
 * Add offset & dimension functions
 
+* events type can be passed as a string argument
+
 ## 0.2.2
 
 * bugfix: revert previous commit replacing coll? with sequential?
