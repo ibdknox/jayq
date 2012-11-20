@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.3
+
+* Performance improvements to `$` `css` `attr` `val` `data`
+
+* Clean up (remove some unecessary locals)
+
+* Add support for map arity to `css` `attr` `data` (ex: (attr {:foo "bar" ...}))
+
+* Add offset & dimension functions
+
 ## 0.2.2
 
 * bugfix: revert previous commit replacing coll? with sequential?
