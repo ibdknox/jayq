@@ -9,12 +9,12 @@
 
 (defn ->selector [sel]
   (cond
-    (string? sel) sel
-    (fn? sel) (if-let [cm (crate-meta sel)]
-                (str "[crateGroup=" cm "]")
-                sel)
-    (keyword? sel) (name sel)
-    :else sel))
+   (string? sel) sel
+   (fn? sel) (if-let [cm (crate-meta sel)]
+               (str "[crateGroup=" cm "]")
+               sel)
+   (keyword? sel) (name sel)
+   :else sel))
 
 (defn $
   ([sel context]
@@ -71,9 +71,9 @@
 
 (defn text
   ([$elem]
-   (.text $elem))
+     (.text $elem))
   ([$elem txt]
-    (.text $elem txt)))
+     (.text $elem txt)))
 
 (defn css
   ([$elem p v]
@@ -179,7 +179,7 @@
      (.parentsUntil $elem))
   ([$elem selector]
      (.parentsUntil $elem (->selector selector)))
-    ([$elem selector filtr]
+  ([$elem selector filtr]
      (.parentsUntil $elem (->selector selector) (name filtr))))
 
 (defn children
@@ -269,21 +269,21 @@
 
 (defn ajax
   ([url settings]
-    (.ajax js/jQuery url (clj->js settings)))
+     (.ajax js/jQuery url (clj->js settings)))
   ([settings]
-    (.ajax js/jQuery (clj->js settings))))
+     (.ajax js/jQuery (clj->js settings))))
 
 (defn ^:private mimetype-converter [s]
   (reader/read-string (str s)))
 
 (.ajaxSetup js/jQuery
- (clj->js
-  {:accepts {:edn "application/edn, text/edn"
-             :clojure "application/clojure, text/clojure"}
-   :contents {"clojure" #"edn|clojure"}
-   :converters
-   {"text edn" mimetype-converter
-    "text clojure" mimetype-converter}}))
+            (clj->js
+             {:accepts {:edn "application/edn, text/edn"
+                        :clojure "application/clojure, text/clojure"}
+              :contents {"clojure" #"edn|clojure"}
+              :converters
+              {"text edn" mimetype-converter
+               "text clojure" mimetype-converter}}))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -304,10 +304,10 @@
 
 (defn ->event [e]
   (cond
-    (keyword? e) (name e)
-    (map? e) (clj->js e)
-    (coll? e) (string/join " " (map name e))
-    :else (throw (js/Error. (str "Unknown event type: " e)))))
+   (keyword? e) (name e)
+   (map? e) (clj->js e)
+   (coll? e) (string/join " " (map name e))
+   :else e))
 
 (defn on [$elem events & [sel data handler]]
   (.on $elem
