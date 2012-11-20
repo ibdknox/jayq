@@ -369,7 +369,7 @@
   ([$elem coords]
      (.offset (clj->js coords)))
   ([$elem]
-     (js->clj (.offset $elem) :keywordize-keys)))
+     (js->clj (.offset $elem) :keywordize-keys true)))
 
 (defn offset-parent
   [$elem]
