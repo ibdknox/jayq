@@ -303,11 +303,9 @@
   (.delegate $elem (->selector sel) (name ev) func))
 
 (defn ->event [e]
-  (cond
-   (keyword? e) (name e)
-   (map? e) (clj->js e)
-   (coll? e) (string/join " " (map name e))
-   :else e))
+  (if (coll? e)
+    (string/join " " (map name e))
+    (clj->js e)))
 
 (defn on [$elem events & [sel data handler]]
   (.on $elem
