@@ -96,9 +96,6 @@
   ([$elem x]
      (. $elem (data (clj->js x)))))
 
-(defn position [$elem]
-  (js->clj (.position $elem) :keywordize-keys true))
-
 (defn add-class [$elem cl]
   (.addClass $elem (name cl)))
 
@@ -372,15 +369,14 @@
   ([$elem coords]
      (.offset (clj->js coords)))
   ([$elem]
-     (.offset $elem)))
+     (js->clj (.offset $elem) :keywordize-keys)))
 
 (defn offset-parent
   [$elem]
   (.offsetParent $elem))
 
-(defn position
-  [$elem]
-  (.position $elem))
+(defn position [$elem]
+  (js->clj (.position $elem) :keywordize-keys true))
 
 (defn scroll-left
   ([$elem x]
