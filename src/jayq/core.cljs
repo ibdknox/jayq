@@ -16,10 +16,11 @@
     (keyword? sel) (name sel)
     :else sel))
 
-(def $ (fn [sel & [context]]
-         (if-not context
-           (js/jQuery (->selector sel))
-           (js/jQuery (->selector sel) context))))
+(defn $
+  ([sel context]
+     (js/jQuery (->selector sel) context))
+  ([sel]
+     (js/jQuery (->selector sel))))
 
 (extend-type js/jQuery
   ISeqable
@@ -74,44 +75,41 @@
   ([$elem txt]
     (.text $elem txt)))
 
-(defn css [$elem opts]
-  (if (keyword? opts)
-    (.css $elem (name opts))
-    (.css $elem (clj->js opts))))
+(defn css
+  ([$elem p v]
+     (.css $elem (name p) v))
+  ([$elem opts]
+     (.css $elem (clj->js opts))))
 
-(defn attr [$elem a & [v]]
-  (let [a (name a)]
-    (if-not v
-      (. $elem (attr a))
-      (. $elem (attr a v)))))
+(defn attr
+  ([$elem n v]
+     (. $elem (attr (name n) v)))
+  ([$elem x]
+     (. $elem (attr (clj->js x)))))
 
 (defn remove-attr [$elem a]
   (.removeAttr $elem (name a)))
 
-(defn data [$elem k & [v]]
-  (let [k (name k)]
-    (if-not v
-      (. $elem (data k))
-      (. $elem (data k v)))))
+(defn data
+  ([$elem k v]
+     (. $elem (data (name k) v)))
+  ([$elem x]
+     (. $elem (data (clj->js x)))))
 
 (defn position [$elem]
   (js->clj (.position $elem) :keywordize-keys true))
 
 (defn add-class [$elem cl]
-  (let [cl (name cl)]
-    (.addClass $elem cl)))
+  (.addClass $elem (name cl)))
 
 (defn remove-class [$elem cl]
-  (let [cl (name cl)]
-    (.removeClass $elem cl)))
+  (.removeClass $elem (name cl)))
 
 (defn toggle-class [$elem cl]
-  (let [cl (name cl)]
-    (.toggleClass $elem cl)))
+  (.toggleClass $elem (name cl)))
 
 (defn has-class [$elem cl]
-  (let [cl (name cl)]
-    (.hasClass $elem cl)))
+  (.hasClass $elem (name cl)))
 
 (defn is [$elem selector]
   (.is $elem (->selector selector)))
@@ -248,10 +246,11 @@
 (defn empty [$elem]
   (.empty $elem))
 
-(defn val [$elem & [v]]
-  (if v
-    (.val $elem v)
-    (. $elem (val))))
+(defn val
+  ([$elem v]
+     (.val $elem v))
+  ([$elem]
+     (.val $elem)))
 
 (defn serialize [$elem]
   (.serialize $elem))
