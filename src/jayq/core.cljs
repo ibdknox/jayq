@@ -33,7 +33,7 @@
                   (list)))
 
   ICounted
-  (-count [this] (. this (size)))
+  (-count [this] (.-length this))
 
   IIndexed
   (-nth [this n]
