@@ -412,7 +412,7 @@
           (clj->js fns-args)))
 
 (defn progress
-  [deferred fn-args]
+  [deferred fns-args]
   (.progress deferred (clj->js fns-args)))
 
 (defn promise
@@ -454,11 +454,11 @@
 
 (defn pipe
   ([deferred done-filter]
-     (.-pipe deferred done-filter))
+     (.pipe deferred done-filter))
   ([deferred done-filter fail-filter]
-     (.-pipe deferred done-filter fail-filter))
+     (.pipe deferred done-filter fail-filter))
   ([deferred done-filter fail-filter progress-filter]
-     (.-pipe deferred done-filter fail-filter progress-filter)))
+     (.pipe deferred done-filter fail-filter progress-filter)))
 
 (defn state
   [deferred]
