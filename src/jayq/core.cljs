@@ -432,7 +432,7 @@
   [deferred args]
   (.reject deferred (clj->js args)))
 
-(defn reject-With
+(defn reject-with
   [deferred context args]
   (.rejectWith deferred context (clj->js args)))
 
