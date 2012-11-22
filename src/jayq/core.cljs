@@ -17,10 +17,10 @@
    :else sel))
 
 (defn $
-  ([sel context]
-     (js/jQuery (->selector sel) context))
   ([sel]
-     (js/jQuery (->selector sel))))
+     (js/jQuery (->selector sel)))
+  ([sel context]
+     (js/jQuery (->selector sel) context)))
 
 (extend-type js/jQuery
   ISeqable
@@ -76,10 +76,10 @@
      (.text $elem txt)))
 
 (defn css
-  ([$elem p v]
-     (.css $elem (name p) v))
   ([$elem opts]
-     (.css $elem (clj->js opts))))
+     (.css $elem (clj->js opts)))
+  ([$elem p v]
+     (.css $elem (name p) v)))
 
 (defn attr
   ([$elem n v]
