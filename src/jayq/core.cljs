@@ -437,7 +437,7 @@
   (.rejectWith deferred context (clj->js args)))
 
 (defn notify
-  [deferred & args]
+  [deferred args]
   (.notify deferred (clj->js args)))
 
 (defn notify-with
