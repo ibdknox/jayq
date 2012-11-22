@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.0
+
+* Add `Deferred` functions
+
 ## 0.2.3
 
 * Performance improvements to `$` `css` `attr` `val` `data`
