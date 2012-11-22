@@ -377,13 +377,89 @@
   (js->clj (.position $elem) :keywordize-keys true))
 
 (defn scroll-left
-  ([$elem x]
-     (.scrollLeft $elem x))
   ([$elem]
-     (.scrollLeft $elem)))
+     (.scrollLeft $elem))
+  ([$elem x]
+     (.scrollLeft $elem x)))
 
 (defn scroll-top
-  ([$elem x]
-     (.scrollTop $elem x))
   ([$elem]
-     (.scrollTop $elem)))
+     (.scrollTop $elem))
+  ([$elem x]
+     (.scrollTop $elem x)))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Deferred
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(def $when $/when)
+
+(defn then
+  ([deferred done-fn fail-fn]
+     (.then deferred done-fn fail-fn))
+  ([deferred done-fn fail-fn progress-fn]
+     (.then deferred done-fn fail-fn progress-fn)))
+
+(defn done
+  [deferred & fns-args]
+  (.apply (.-done deferred)
+          (clj->js fns-args)))
+
+(defn fail
+  [deferred & fns-args]
+  (.apply (.-fail deferred)
+          (clj->js fns-args)))
+
+(defn progress
+  [deferred fn-args]
+  (.progress deferred (clj->js fns-args)))
+
+(defn promise
+  ([deferred]
+     (.promise deferred))
+  ([deferred type]
+     (.promise deferred type))
+  ([deferred type target]
+     (.promise deferred type target)))
+
+(defn always
+  [deferred & fns-args]
+  (.apply (.-always deferred)
+          (clj->js fns-args)))
+
+(defn reject
+  [deferred args]
+  (.reject deferred (clj->js args)))
+
+(defn reject-With
+  [deferred context args]
+  (.reject deferred context (clj->js args)))
+
+(defn notify
+  [deferred & args]
+  (.notify deferred (clj->js args)))
+
+(defn notify-with
+  [deferred context args]
+  (.notifyWith deferred context (clj->js args)))
+
+(defn resolve
+  [deferred args]
+  (.resolve deferred (clj->js args)))
+
+(defn resolve-with
+  [deferred context args]
+  (.resolveWith deferred context  (clj->js args)))
+
+(defn pipe
+  ([deferred done-filter]
+     (.-pipe deferred done-filter))
+  ([deferred done-filter fail-filter]
+     (.-pipe deferred done-filter fail-filter))
+  ([deferred done-filter fail-filter progress-filter]
+     (.-pipe deferred done-filter fail-filter progress-filter)))
+
+(defn state
+  [deferred]
+  (keyword (.state deferred)))
