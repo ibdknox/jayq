@@ -435,11 +435,11 @@
 
 (defn reject
   [deferred args]
-  (.reject deferred (clj->js args)))
+  (.reject deferred args))
 
 (defn reject-with
   [deferred context args]
-  (.rejectWith deferred context (clj->js args)))
+  (.rejectWith deferred context args))
 
 (defn notify
   [deferred args]
@@ -447,15 +447,15 @@
 
 (defn notify-with
   [deferred context args]
-  (.notifyWith deferred context (clj->js args)))
+  (.notifyWith deferred context args))
 
 (defn resolve
   [deferred args]
-  (.resolve deferred (clj->js args)))
+  (.resolve deferred args))
 
 (defn resolve-with
   [deferred context args]
-  (.resolveWith deferred context  (clj->js args)))
+  (.resolveWith deferred context args))
 
 (defn pipe
   ([deferred done-filter]
