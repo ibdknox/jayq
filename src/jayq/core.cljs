@@ -397,9 +397,14 @@
 
 (defn then
   ([deferred done-fn fail-fn]
-     (.then deferred done-fn fail-fn))
+     (.then deferred
+            (clj->js done-fn)
+            (clj->js fail-fn)))
   ([deferred done-fn fail-fn progress-fn]
-     (.then deferred done-fn fail-fn progress-fn)))
+     (.then deferred
+            (clj->js done-fn)
+            (clj->js fail-fn)
+            (clj->js progress-fn))))
 
 (defn done
   [deferred & fns-args]
