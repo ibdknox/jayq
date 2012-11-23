@@ -443,7 +443,7 @@
 
 (defn notify
   [deferred args]
-  (.notify deferred (clj->js args)))
+  (.notify deferred args))
 
 (defn notify-with
   [deferred context args]
