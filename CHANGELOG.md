@@ -2,7 +2,9 @@
 
 ## 0.3.0
 
-* Add `Deferred` functions
+* Add `jQuery.Deferred.*` wrappers
+
+* Add `jayq.macros/let-ajax` `jayq.macros/let-deferred` `jayq.macros/do->`
 
 ## 0.2.3
 
