@@ -105,8 +105,7 @@ Some useful macros can found in `jayq.macros` (surprising) [Source](https://gith
 
 * `jayq.macros/do-> [m-specs steps & body]`: `let-*` macros are build
   from it. `m-specs` is a map of :bind and :return functions that dict
-  the workflow between the bindings/return functions (see: `jayq.core/deferred-m`
-  and `jayq.core/ajax-m`).
+  the workflow (see: `jayq.core/deferred-m` and `jayq.core/ajax-m`).
 
 Error handling in `let-ajax` and `let-deferred` forms should be done using
 `jq.core/fail` directly on the deferred (= ajax calls in let-ajax).
