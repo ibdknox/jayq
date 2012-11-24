@@ -22,9 +22,7 @@
        ~(reduce (fn [m [x f]]
                   (case x
                     :let `(let ~f ~m)
-                    `(~bind ~f (fn [~x] ~m))
-                    )
-                  )
+                    `(~bind ~f (fn [~x] ~m))))
                 `(~return (do ~@body))
                 (reverse steps-pairs)))))
 
