@@ -36,11 +36,17 @@ the most solid base out there, when we can just build greater abstractions on to
 jQuery is the pinnacle of the client side web? Not at all, but I do believe it provides a great foundation
 for us to build exactly that.
 
-## Usage
+## Installation
+
+Add the following to your `project.clj`
 
 ```clojure
 [jayq "0.2.3"]
 ```
+
+## Usage
+
+Most of the API in `jayq.core` maps 1:1 with jQuery functions. [Source](https://github.com/ibdknox/jayq/blob/master/src/jayq/core.cljs)
 
 ```clojure
 (ns myapp
@@ -53,6 +59,50 @@ for us to build exactly that.
   (inner "Loading!"))
 
 ```
+
+`jayq.utils` [Source](https://github.com/ibdknox/jayq/blob/master/src/jayq/utils.cljs)
+
+* `jayq.util/log [value & text]` : console.log wrapper
+
+* `jayq.util/clj->js [x]` : To recursively transform clojure values to JS values
+
+* `jayq.util/wait [ms f]` : setTimeout wrapper
+
+
+Some useful macros can found in `jayq.macros` (surprising) [Source](https://github.com/ibdknox/jayq/blob/master/src/jayq/macros.cljs)
+
+* `jayq.macros/queue [elem & body]` : a wrapper of `jayq.core/queue`
+  that includes the lambda with a scoped `this` symbol
+
+* `jayq.macros/ready [& body]` : a wrapper of `jayq.core/document-ready`
+
+* `jayq.macros/let-ajax [steps & body]`: `let` like form allowing to
+  chain ajax calls and bind return values to vars for later use.
+  You can supply :let steps (like in for/doseq) between "regular" steps.
+
+```clojure
+(let-ajax [a {:url "http://localhost:8000/1.json"
+              :dataType :json}
+           b  {:dataType :json :url "http://localhost:8000/2.json"}]
+       (merge a b))
+```
+
+* `jayq.macros/let-deferred [steps & body]`: `let` like form allowing
+  to chain deferred and bind return values to vars for later use.
+  You can supply :let steps (like in for/doseq) between "regular" steps.
+
+```clojure
+(let-deferred
+    [a (jq/ajax "http://localhost:8000/1.json")
+     :let [foo "bar"]
+     b (jq/ajax "http://localhost:8000/2.json")]
+(merge a b foo))
+```
+
+* `jayq.macros/do-> [m-specs steps & body]`: `let-*` macros are build
+  from it. `m-specs` is a map of :bind and :return functions that dict
+  the workflow between the bindings/return functions (see: `jayq.core/deferred-m`
+  and `jayq.core/ajax-m`).
 
 ## Changelog
 
@@ -79,7 +129,7 @@ externs file in `./resources/externs/`):
   }
 ```
 
-Without this, you'l see errors like `Object ... has no method XX`. See http://lukevanderhart.com/2011/09/30/using-javascript-and-clojurescript.html for more on externs.
+Without this, you will see errors like `Object ... has no method XX`. See http://lukevanderhart.com/2011/09/30/using-javascript-and-clojurescript.html for more on externs.
 
 ## License
 
