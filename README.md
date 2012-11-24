@@ -80,7 +80,7 @@ Some useful macros can found in `jayq.macros` (surprising) [Source](https://gith
   chain ajax calls and bind return values to locals for use once all
   calls completed (or in a :let intermediary step).
   The step value expected is a valid jq.core/ajax request map.
-  You can supply :let steps (like in for/doseq) between "regular" steps.
+  You can supply :let/:when steps (like in for/doseq) between "regular" steps.
 
 ```clojure
 (let-ajax [a {:url "http://localhost:8000/1.json"
@@ -91,14 +91,15 @@ Some useful macros can found in `jayq.macros` (surprising) [Source](https://gith
 
 * `jayq.macros/let-deferred [steps & body]`: `let` like form allowing
   to chain deferred and bind return values to to locals for use once all
-  deferreds are realized (or in a :let intermediary step).
+  deferreds are realized (or in a :let/:when intermediary step).
   The step value expected is anything that returns a deferred instance.
-  You can supply :let steps (like in for/doseq) between "regular" steps.
+  You can supply :let/:when steps (like in for/doseq) between "regular" steps.
 
 ```clojure
 (let-deferred
     [a (jq/ajax "http://localhost:8000/1.json")
      :let [foo "bar"]
+     :when (= (concat a foo) "foobar")
      b (jq/ajax "http://localhost:8000/2.json")]
 (merge a b foo))
 ```
