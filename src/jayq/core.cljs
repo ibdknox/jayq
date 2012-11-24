@@ -393,6 +393,8 @@
 ;; Deferred
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+
+(def $deferred $/Deferred)
 (def $when $/when)
 
 (defn then
@@ -409,11 +411,13 @@
 (defn done
   [deferred & fns-args]
   (.apply (.-done deferred)
+          deferred
           (clj->js fns-args)))
 
 (defn fail
   [deferred & fns-args]
   (.apply (.-fail deferred)
+          deferred
           (clj->js fns-args)))
 
 (defn progress
@@ -431,6 +435,7 @@
 (defn always
   [deferred & fns-args]
   (.apply (.-always deferred)
+          deferred
           (clj->js fns-args)))
 
 (defn reject
