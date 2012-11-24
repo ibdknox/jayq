@@ -16,13 +16,15 @@
   [m-specs steps & body]
   (let [steps-pairs (partition 2 steps)
         bind (gensym)
-        return (gensym)]
+        return (gensym)
+        zero (gensym)]
     `(let [~bind (:bind ~m-specs)
-           ~return (:return ~m-specs)]
+           ~return (:return ~m-specs)
+           ~zero (:zero ~m-specs)]
        ~(reduce (fn [m [x f]]
                   (case x
                     :let `(let ~f ~m)
-                    :when `(if ~f ~m (~return ~f))
+                    :when `(if ~f ~m (~zero (~return ~f)))
                     `(~bind ~f (fn [~x] ~m))))
                 `(~return (do ~@body))
                 (reverse steps-pairs)))))

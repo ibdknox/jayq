@@ -480,9 +480,11 @@
            (let [dfd ($deferred)]
              (done x (fn [v]
                        (done (f v) (partial resolve dfd))))
-             (promise dfd)))})
+             (promise dfd)))
+   :zero identity})
 
 (def ajax-m
   {:return identity
    :bind (fn [x f]
-           (done (ajax x) f))})
+           (done (ajax x) f))
+   :zero identity})
