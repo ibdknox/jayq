@@ -473,3 +473,15 @@
 (defn state
   [deferred]
   (keyword (.state deferred)))
+
+(def deferred-m
+  {:return $when
+   :bind (fn [x f]
+           (let [dfd ($deferred)]
+             (done x (fn [v]
+                       (done (f v) (partial resolve dfd))))
+             (promise dfd)))})
+
+(def ajax-m
+  {:return identity
+   :bind (fn [x f] (ajax (assoc x :success f)))})
