@@ -77,7 +77,8 @@ Some useful macros can found in `jayq.macros` (surprising) [Source](https://gith
 * `jayq.macros/ready [& body]` : a wrapper of `jayq.core/document-ready`
 
 * `jayq.macros/let-ajax [steps & body]`: `let` like form allowing to
-  chain ajax calls and bind return values to vars for later use.
+  chain ajax calls and bind return values to locals for use once all
+  calls completed (or in a :let intermediary step).
   The step value expected is a valid jq.core/ajax request map.
   You can supply :let steps (like in for/doseq) between "regular" steps.
 
@@ -89,7 +90,8 @@ Some useful macros can found in `jayq.macros` (surprising) [Source](https://gith
 ```
 
 * `jayq.macros/let-deferred [steps & body]`: `let` like form allowing
-  to chain deferred and bind return values to vars for later use.
+  to chain deferred and bind return values to to locals for use once all
+  deferreds are realized (or in a :let intermediary step).
   The step value expected is anything that returns a deferred instance.
   You can supply :let steps (like in for/doseq) between "regular" steps.
 
@@ -105,6 +107,9 @@ Some useful macros can found in `jayq.macros` (surprising) [Source](https://gith
   from it. `m-specs` is a map of :bind and :return functions that dict
   the workflow between the bindings/return functions (see: `jayq.core/deferred-m`
   and `jayq.core/ajax-m`).
+
+Error handling in `let-ajax` and `let-deferred` forms should be done using
+`jq.core/fail` directly on the deferred (= ajax calls in let-ajax).
 
 ## Changelog
 
