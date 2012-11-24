@@ -484,4 +484,5 @@
 
 (def ajax-m
   {:return identity
-   :bind (fn [x f] (ajax (assoc x :success f)))})
+   :bind (fn [x f]
+           (done (ajax x) f))})
