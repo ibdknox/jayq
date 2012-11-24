@@ -90,7 +90,7 @@ Some useful macros can found in `jayq.macros` (surprising) [Source](https://gith
 ```
 
 * `jayq.macros/let-deferred [steps & body]`: `let` like form allowing
-  to chain deferred and bind return values to to locals for use once all
+  to chain deferreds and bind return values to locals for use once all
   deferreds are realized (or in a :let/:when intermediary step).
   The step value expected is anything that returns a deferred instance.
   You can supply :let/:when steps (like in for/doseq) between "regular" steps.
