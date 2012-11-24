@@ -41,7 +41,7 @@ for us to build exactly that.
 Add the following to your `project.clj`
 
 ```clojure
-[jayq "0.2.3"]
+[jayq "0.3.0"]
 ```
 
 ## Usage
