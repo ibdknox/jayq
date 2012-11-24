@@ -78,6 +78,7 @@ Some useful macros can found in `jayq.macros` (surprising) [Source](https://gith
 
 * `jayq.macros/let-ajax [steps & body]`: `let` like form allowing to
   chain ajax calls and bind return values to vars for later use.
+  The step value expected is a valid jq.core/ajax request map.
   You can supply :let steps (like in for/doseq) between "regular" steps.
 
 ```clojure
@@ -89,6 +90,7 @@ Some useful macros can found in `jayq.macros` (surprising) [Source](https://gith
 
 * `jayq.macros/let-deferred [steps & body]`: `let` like form allowing
   to chain deferred and bind return values to vars for later use.
+  The step value expected is anything that returns a deferred instance.
   You can supply :let steps (like in for/doseq) between "regular" steps.
 
 ```clojure
