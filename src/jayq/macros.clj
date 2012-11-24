@@ -24,7 +24,7 @@
        ~(reduce (fn [m [x f]]
                   (case x
                     :let `(let ~f ~m)
-                    :when `(if ~f ~m (~zero (~return ~f)))
+                    :when `(if ~f ~m (~zero (~return nil)))
                     `(~bind ~f (fn [~x] ~m))))
                 `(~return (do ~@body))
                 (reverse steps-pairs)))))
