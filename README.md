@@ -60,7 +60,7 @@ Most of the API in `jayq.core` maps 1:1 with jQuery functions. [Source](https://
 
 ```
 
-`jayq.utils` [Source](https://github.com/ibdknox/jayq/blob/master/src/jayq/utils.cljs)
+`jayq.util` [Source](https://github.com/ibdknox/jayq/blob/master/src/jayq/util.cljs)
 
 * `jayq.util/log [value & text]` : console.log wrapper
 
@@ -69,7 +69,7 @@ Most of the API in `jayq.core` maps 1:1 with jQuery functions. [Source](https://
 * `jayq.util/wait [ms f]` : setTimeout wrapper
 
 
-Some useful macros can found in `jayq.macros` (surprising) [Source](https://github.com/ibdknox/jayq/blob/master/src/jayq/macros.cljs)
+Some useful macros can found in `jayq.macros` (surprising) [Source](https://github.com/ibdknox/jayq/blob/master/src/jayq/macros.clj)
 
 * `jayq.macros/queue [elem & body]` : a wrapper of `jayq.core/queue`
   that includes the lambda with a scoped `this` symbol
