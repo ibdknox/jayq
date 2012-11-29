@@ -66,10 +66,10 @@
 
   IFn
   (-invoke
-    ([_ k]
-       (-lookup (js* "this") k))
-    ([_ k not-found]
-       (-lookup (js* "this") k not-found))))
+    ([this k]
+       (-lookup this k))
+    ([this k not-found]
+       (-lookup this k not-found))))
 
 
 (defn anim [elem props dur]
