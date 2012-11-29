@@ -1,9 +1,17 @@
 # Changelog
 
+## 0.3.2
+
+* Add second arity to `jayq.core/inner`
+
+* Add jayq.core/read, reads content of (script) element with clojure
+  data as content.
+  ex: ```html<script type="text/edn">{:foo "bar"}</script>```
+
 ## 0.3.1
 
-* Clean up the jQuery type extension and replace jQuery.prototype.call
-  definition with IFn extension
+* Clean up the jQuery type extension and replace `jQuery.prototype.call`
+  definition with `IFn` extension
 
 ## 0.3.0
 
