@@ -243,8 +243,11 @@
 (defn clone [$elem]
   (.clone $elem))
 
-(defn inner [$elem v]
-  (.html $elem v))
+(defn inner
+  ([$elem v]
+     (.html $elem v))
+  ([$elem]
+     (.html $elem)))
 
 (defn empty [$elem]
   (.empty $elem))
@@ -291,6 +294,11 @@
               {"text edn" mimetype-converter
                "text clojure" mimetype-converter}}))
 
+
+(defn read
+  "Reads clojure data from element content (preferably a script tag with type=edn/clojure)"
+  [$elem]
+  (-> $elem inner reader/read-string))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Events
