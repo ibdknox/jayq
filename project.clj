@@ -1,2 +1,2 @@
-(defproject jayq "0.3.0"
+(defproject jayq "0.3.1-SNAPSHOT"
   :description "A ClojureScript wrapper for jQuery")

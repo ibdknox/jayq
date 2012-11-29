@@ -23,6 +23,7 @@
      (js/jQuery (->selector sel) context)))
 
 (extend-type js/jQuery
+
   ISeqable
   (-seq [this] (when (.get this 0)
                  this))
@@ -36,15 +37,16 @@
   (-count [this] (.-length this))
 
   IIndexed
-  (-nth [this n]
-    (when (< n (count this))
-      (.slice this n (inc n))))
-  (-nth [this n not-found]
-    (if (< n (count this))
-      (.slice this n (inc n))
-      (if (undefined? not-found)
-        nil
-        not-found)))
+  (-nth
+    ([this n]
+       (when (< n (count this))
+         (.slice this n (inc n))))
+    ([this n not-found]
+       (if (< n (count this))
+         (.slice this n (inc n))
+         (if (undefined? not-found)
+           nil
+           not-found))))
 
   ISequential
 
@@ -56,15 +58,19 @@
        (-nth this k not-found)))
 
   IReduce
-  (-reduce [this f]
-    (ci-reduce this f))
-  (-reduce [this f start]
-    (ci-reduce this f start)))
+  (-reduce
+    ([this f]
+       (ci-reduce this f))
+    ([this f start]
+       (ci-reduce this f start)))
 
-(set! jQuery.prototype.call
-      (fn
-        ([_ k] (-lookup (js* "this") k))
-        ([_ k not-found] (-lookup (js* "this") k not-found))))
+  IFn
+  (-invoke
+    ([_ k]
+       (-lookup (js* "this") k))
+    ([_ k not-found]
+       (-lookup (js* "this") k not-found))))
+
 
 (defn anim [elem props dur]
   (.animate elem (clj->js props) dur))
