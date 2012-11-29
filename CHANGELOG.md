@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.1
+
+* Clean up the jQuery type extension and replace jQuery.prototype.call
+  definition with IFn extension
+
 ## 0.3.0
 
 * Add `jQuery.Deferred.*` wrappers
