@@ -6,7 +6,7 @@
 
 * Add jayq.core/read, reads content of (script) element with clojure
   data as content.
-  ex: ```html<script type="text/edn">{:foo "bar"}</script>```
+  ex: ```<script type="text/edn">{:foo "bar"}</script>```
 
 ## 0.3.1
 
