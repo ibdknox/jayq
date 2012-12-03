@@ -125,7 +125,7 @@ You can find externs files from the
 for a specific jQuery version.
 
 Add this to your compilation options (assuming that your put the
-externs file in `./resources/externs/`):
+externs file in `./externs/`):
 
 ```clojure
 
