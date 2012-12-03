@@ -69,16 +69,16 @@ Most of the API in `jayq.core` maps 1:1 with jQuery functions. [Source](https://
 * `jayq.util/wait [ms f]` : setTimeout wrapper
 
 
-Some useful macros can found in `jayq.macros` (surprising) [Source](https://github.com/ibdknox/jayq/blob/master/src/jayq/macros.clj)
+Some useful macros can be found in `jayq.macros` (surprisingly) [Source](https://github.com/ibdknox/jayq/blob/master/src/jayq/macros.clj)
 
 * `jayq.macros/queue [elem & body]` : a wrapper of `jayq.core/queue`
   that includes the lambda with a scoped `this` symbol
 
 * `jayq.macros/ready [& body]` : a wrapper of `jayq.core/document-ready`
 
-* `jayq.macros/let-ajax [steps & body]`: `let` like form allowing to
-  chain ajax calls and bind return values to locals for use once all
-  calls completed (or in a :let intermediary step).
+* `jayq.macros/let-ajax [steps & body]`: `let` like form allowing
+  chaining of ajax calls and binding return values to locals for use
+  once all the calls are complete (or in a :let intermediary step).
   The step value expected is a valid jq.core/ajax request map.
   You can supply :let/:when steps (like in for/doseq) between "regular" steps.
 
@@ -90,8 +90,8 @@ Some useful macros can found in `jayq.macros` (surprising) [Source](https://gith
 ```
 
 * `jayq.macros/let-deferred [steps & body]`: `let` like form allowing
-  to chain deferreds and bind return values to locals for use once all
-  deferreds are realized (or in a :let/:when intermediary step).
+  chaining of deferreds and binding return values to locals for use
+  once all the deferreds are realized (or in a :let/:when intermediary step).
   The step value expected is anything that returns a deferred instance.
   You can supply :let/:when steps (like in for/doseq) between "regular" steps.
 
@@ -104,8 +104,8 @@ Some useful macros can found in `jayq.macros` (surprising) [Source](https://gith
 (merge a b foo))
 ```
 
-* `jayq.macros/do-> [m-specs steps & body]`: `let-*` macros are build
-  from it. `m-specs` is a map of :bind and :return functions that dict
+* `jayq.macros/do-> [m-specs steps & body]`: `let-*` macros are built
+  from it. `m-specs` is a map of :bind and :return functions that dictate
   the workflow (see: `jayq.core/deferred-m` and `jayq.core/ajax-m`).
 
 Error handling in `let-ajax` and `let-deferred` forms should be done using
