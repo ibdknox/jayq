@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.3.3
+## 1.0.0
 
 * Handles `jq.core/ajax` `:data` encoding via pr-str when the
 `:contentType` option is set to either `application/edn`

@@ -41,10 +41,13 @@ for us to build exactly that.
 Add the following to your `project.clj`
 
 ```clojure
-[jayq "0.3.2"]
+[jayq "1.0.0"]
 ```
 
 ## Usage
+
+
+### jayq.core
 
 Most of the API in `jayq.core` maps 1:1 with jQuery functions. [Source](https://github.com/ibdknox/jayq/blob/master/src/jayq/core.cljs)
 
@@ -60,7 +63,19 @@ Most of the API in `jayq.core` maps 1:1 with jQuery functions. [Source](https://
 
 ```
 
-`jayq.util` [Source](https://github.com/ibdknox/jayq/blob/master/src/jayq/util.cljs)
+#### jayq.core/ajax clojure & edn mime types support
+
+Requests with `:contentType` option matching `text/clojure` `text/edn`
+`application/clojure` `application/edn` (as string or keyword) will
+have the :data turned into its string representation (via pr-str)
+
+Responses with `text/clojure` `text/edn` `application/clojure`
+`application/edn` mime types are read as clojure data before being
+passed to callbacks.  The same applies if the dataType option is set
+to `:edn` or `:clojure`.
+
+
+### jayq.util [Source](https://github.com/ibdknox/jayq/blob/master/src/jayq/util.cljs)
 
 * `jayq.util/log [value & text]` : console.log wrapper
 
@@ -69,7 +84,7 @@ Most of the API in `jayq.core` maps 1:1 with jQuery functions. [Source](https://
 * `jayq.util/wait [ms f]` : setTimeout wrapper
 
 
-Some useful macros can be found in `jayq.macros` (surprisingly) [Source](https://github.com/ibdknox/jayq/blob/master/src/jayq/macros.clj)
+### `jayq.macros` [Source](https://github.com/ibdknox/jayq/blob/master/src/jayq/macros.clj)
 
 * `jayq.macros/queue [elem & body]` : a wrapper of `jayq.core/queue`
   that includes the lambda with a scoped `this` symbol
@@ -109,7 +124,7 @@ Some useful macros can be found in `jayq.macros` (surprisingly) [Source](https:/
   the workflow (see: `jayq.core/deferred-m` and `jayq.core/ajax-m`).
 
 Error handling in `let-ajax` and `let-deferred` forms should be done using
-`jq.core/fail` directly on the deferred (= ajax calls in let-ajax).
+`jq.core/fail` or the :error key on the request map.
 
 ## Changelog
 
