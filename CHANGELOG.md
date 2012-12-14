@@ -7,6 +7,13 @@
 `application/clojure` `text/clojure` `text/edn`. The `:contentType`
 value can be a string or a keyword, and can be followed by a charset.
 
+```clojure
+(jayq.core/ajax {:url "foo"
+                 :type :post
+                 :contentType :application/edn
+                 :data {:bar [1 2 3]}})
+```
+
 ## 0.3.2
 
 * Add second arity to `jayq.core/inner`
