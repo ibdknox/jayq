@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.3
+
+* Handles jq.core/ajax :data encoding via pr-str when the :contentType
+  options is set to either `application/edn` `application/clojure`
+  `text/clojure` `text/edn` `edn` `clojure`. The contentType value can
+  be a string or a keyword, and can be followed by a charset.
+
 ## 0.3.2
 
 * Add second arity to `jayq.core/inner`
