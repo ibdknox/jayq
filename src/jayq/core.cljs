@@ -283,7 +283,7 @@
                "text clojure" mimetype-converter}}))
 
 (defn clj-content-type? [x]
-  (re-find #"^(text/|application/)?(clojure|edn)" x))
+  (re-find #"^(text|application)/(clojure|edn)" x))
 
 (defn ->content-type
   [ct]
