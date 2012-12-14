@@ -2,10 +2,10 @@
 
 ## 0.3.3
 
-* Handles `jq.core/ajax` `:data` encoding via pr-str when the `:contentType`
-options is set to either `application/edn` `application/clojure`
-`text/clojure` `text/edn`. The contentType value can
-be a string or a keyword, and can be followed by a charset.
+* Handles `jq.core/ajax` `:data` encoding via pr-str when the
+`:contentType` option is set to either `application/edn`
+`application/clojure` `text/clojure` `text/edn`. The `:contentType`
+value can be a string or a keyword, and can be followed by a charset.
 
 ## 0.3.2
 
