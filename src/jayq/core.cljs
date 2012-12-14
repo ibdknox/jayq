@@ -270,18 +270,6 @@
 (defn document-ready [func]
   (.ready ($ js/document) func))
 
-(defn xhr [[method uri] content callback]
-  (let [params (clj->js {:type (string/upper-case (name method))
-                         :data (clj->js content)
-                         :success callback})]
-    (.ajax js/jQuery uri params)))
-
-(defn ajax
-  ([url settings]
-     (.ajax js/jQuery url (clj->js settings)))
-  ([settings]
-     (.ajax js/jQuery (clj->js settings))))
-
 (defn ^:private mimetype-converter [s]
   (reader/read-string (str s)))
 
@@ -294,6 +282,42 @@
               {"text edn" mimetype-converter
                "text clojure" mimetype-converter}}))
 
+(defn clj-content-type? [x]
+  (re-find #"^(text/|application/)?(clojure|edn)" x))
+
+(defn ->content-type
+  [ct]
+  (cond
+    (string? ct) ct
+    ;; we dont use name, just in case it comes with a ns ex:
+    ;; :application/clojure
+    (keyword? ct) (subs (str ct) 1)))
+
+(defn preprocess-request
+  [{:keys [data contentType]
+    :as request}]
+  (let [ct (->content-type contentType)]
+    (if (and ct (clj-content-type? ct))
+      (assoc request
+        :data (-> request :data pr-str)
+        :contentType ct)
+      request)))
+
+(defn ->ajax-settings
+  [request]
+  (-> request preprocess-request clj->js))
+
+(defn ajax
+  ([url settings]
+     (.ajax js/jQuery url (->ajax-settings settings)))
+  ([settings]
+     (.ajax js/jQuery (->ajax-settings settings))))
+
+(defn xhr [[method uri] content callback]
+  (let [params (clj->js {:type (string/upper-case (name method))
+                         :data (clj->js content)
+                         :success callback})]
+    (.ajax js/jQuery uri params)))
 
 (defn read
   "Reads clojure data from element content (preferably a script tag with type=edn/clojure)"
