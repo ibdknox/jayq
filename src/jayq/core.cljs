@@ -297,11 +297,13 @@
   [{:keys [data contentType]
     :as request}]
   (let [ct (->content-type contentType)]
-    (if (and ct (clj-content-type? ct))
-      (assoc request
-        :data (-> request :data pr-str)
-        :contentType ct)
-      request)))
+    (-> request
+        (#(if ct
+            (assoc % :contentType ct)
+            %))
+        (#(if (clj-content-type? ct)
+            (assoc % :data (pr-str data))
+            %)))))
 
 (defn ->ajax-settings
   [request]
