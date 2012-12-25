@@ -41,7 +41,7 @@ for us to build exactly that.
 Add the following to your `project.clj`
 
 ```clojure
-[jayq "1.0.0"]
+[jayq "1..0"]
 ```
 
 ## Usage
@@ -83,7 +83,7 @@ to `:edn` or `:clojure`.
 * `jayq.util/wait [ms f]` : setTimeout wrapper
 
 
-### `jayq.macros` [Source](https://github.com/ibdknox/jayq/blob/master/src/jayq/macros.clj)
+### jayq.macros [Source](https://github.com/ibdknox/jayq/blob/master/src/jayq/macros.clj)
 
 * `jayq.macros/queue [elem & body]` : a wrapper of `jayq.core/queue`
   that includes the lambda with a scoped `this` symbol

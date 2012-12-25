@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0
+
+* Update jayq.util/clj->js to use cljs.core's version of
+  the same function if available + kill warnings with latest cljs rev
+  on jayq.core
+
 ## 1.0.0
 
 * Handles `jq.core/ajax` `:data` encoding via pr-str when the
