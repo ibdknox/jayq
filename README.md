@@ -41,8 +41,11 @@ for us to build exactly that.
 Add the following to your `project.clj`
 
 ```clojure
-[jayq "1.1.0"]
+[jayq "2.0.0"]
 ```
+Note: If you are upgrading to a major version be sure to check the
+[changelog](https://github.com/ibdknox/jayq/blob/master/CHANGELOG.md)
+for breaking changes.
 
 ## Usage
 

@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.0.0 Breaking changes!
+
+* Removed `jayq.util/clj->js` and `jayq.util/map->js` as both were
+  made useless by the recent addition of `cljs.core/clj->js`.
+
+To upgrade to this version of jayq, you will need to use a recent
+build of clojurescript: 0.0-1552+ or via
+[lein-cljsbuild](https://github.com/emezeske/lein-cljsbuild) 0.2.10+.
+
 ## 1.1.0
 
 * Update jayq.util/clj->js to use cljs.core's version of

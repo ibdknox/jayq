@@ -1,8 +1,7 @@
 (ns jayq.core
   (:refer-clojure :exclude [val empty remove find next parents])
   (:require [clojure.string :as string]
-            [cljs.reader :as reader]
-            [jayq.util :as util]))
+            [cljs.reader :as reader]))
 
 (defn crate-meta [func]
   (.-prototype._crateGroup func))
@@ -73,7 +72,7 @@
 
 
 (defn anim [elem props dur]
-  (.animate elem (util/clj->js props) dur))
+  (.animate elem (clj->js props) dur))
 
 (defn text
   ([$elem]
@@ -83,7 +82,7 @@
 
 (defn css
   ([$elem opts]
-     (.css $elem (util/clj->js opts)))
+     (.css $elem (clj->js opts)))
   ([$elem p v]
      (.css $elem (name p) v)))
 
@@ -91,7 +90,7 @@
   ([$elem n v]
      (. $elem (attr (name n) v)))
   ([$elem x]
-     (. $elem (attr (util/clj->js x)))))
+     (. $elem (attr (clj->js x)))))
 
 (defn remove-attr [$elem a]
   (.removeAttr $elem (name a)))
@@ -100,7 +99,7 @@
   ([$elem k v]
      (. $elem (data (name k) v)))
   ([$elem x]
-     (. $elem (data (util/clj->js x)))))
+     (. $elem (data (clj->js x)))))
 
 (defn add-class [$elem cl]
   (.addClass $elem (name cl)))
@@ -274,7 +273,7 @@
   (reader/read-string (str s)))
 
 (.ajaxSetup js/jQuery
-            (util/clj->js
+            (clj->js
              {:accepts {:edn "application/edn, text/edn"
                         :clojure "application/clojure, text/clojure"}
               :contents {"clojure" #"edn|clojure"}
@@ -307,7 +306,7 @@
 
 (defn ->ajax-settings
   [request]
-  (-> request preprocess-request util/clj->js))
+  (-> request preprocess-request clj->js))
 
 (defn ajax
   ([url settings]
@@ -316,8 +315,8 @@
      (.ajax js/jQuery (->ajax-settings settings))))
 
 (defn xhr [[method uri] content callback]
-  (let [params (util/clj->js {:type (string/upper-case (name method))
-                         :data (util/clj->js content)
+  (let [params (clj->js {:type (string/upper-case (name method))
+                         :data (clj->js content)
                          :success callback})]
     (.ajax js/jQuery uri params)))
 
@@ -345,7 +344,7 @@
 (defn ->event [e]
   (if (coll? e)
     (string/join " " (map name e))
-    (util/clj->js e)))
+    (clj->js e)))
 
 (defn on [$elem events & [sel data handler]]
   (.on $elem
@@ -405,7 +404,7 @@
 
 (defn offset
   ([$elem coords]
-     (.offset (util/clj->js coords)))
+     (.offset (clj->js coords)))
   ([$elem]
      (js->clj (.offset $elem) :keywordize-keys true)))
 
@@ -440,29 +439,29 @@
 (defn then
   ([deferred done-fn fail-fn]
      (.then deferred
-            (util/clj->js done-fn)
-            (util/clj->js fail-fn)))
+            (clj->js done-fn)
+            (clj->js fail-fn)))
   ([deferred done-fn fail-fn progress-fn]
      (.then deferred
-            (util/clj->js done-fn)
-            (util/clj->js fail-fn)
-            (util/clj->js progress-fn))))
+            (clj->js done-fn)
+            (clj->js fail-fn)
+            (clj->js progress-fn))))
 
 (defn done
   [deferred & fns-args]
   (.apply (.-done deferred)
           deferred
-          (util/clj->js fns-args)))
+          (clj->js fns-args)))
 
 (defn fail
   [deferred & fns-args]
   (.apply (.-fail deferred)
           deferred
-          (util/clj->js fns-args)))
+          (clj->js fns-args)))
 
 (defn progress
   [deferred fns-args]
-  (.progress deferred (util/clj->js fns-args)))
+  (.progress deferred (clj->js fns-args)))
 
 (defn promise
   ([deferred]
@@ -476,7 +475,7 @@
   [deferred & fns-args]
   (.apply (.-always deferred)
           deferred
-          (util/clj->js fns-args)))
+          (clj->js fns-args)))
 
 (defn reject
   [deferred args]
