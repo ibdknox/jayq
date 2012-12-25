@@ -1,6 +1,8 @@
 (ns jayq.util)
 
-(defn map->js [m]
+(defn map->js
+  "Deprecated! Use cljs.core/clj->js instead."
+  [m]
   (let [out (js-obj)]
     (doseq [[k v] m]
       (aset out (name k) v))
@@ -16,9 +18,11 @@
     (. js/console (log vs))))
 
 (def
-  ^{:doc "Recursively transforms ClojureScript maps into Javascript objects,
-   other ClojureScript colls into JavaScript arrays, and ClojureScript
-   keywords into JavaScript strings."}
+  ^{:doc
+    "Deprecated! Use cljs.core/clj->js instead.
+     Recursively transforms ClojureScript maps into Javascript objects,
+     other ClojureScript colls into JavaScript arrays, and ClojureScript
+     keywords into JavaScript strings."}
   clj->js
   (if (undefined? cljs.core/clj->js)
     (fn clj->js [x]
