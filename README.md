@@ -81,8 +81,6 @@ to `:edn` or `:clojure`.
 
 * `jayq.util/log [value & text]` : console.log wrapper
 
-* `jayq.util/clj->js [x]` : To recursively transform clojure values to JS values
-
 * `jayq.util/wait [ms f]` : setTimeout wrapper
 
 
