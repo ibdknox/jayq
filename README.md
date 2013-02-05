@@ -49,9 +49,9 @@ for breaking changes.
 
 ## Usage
 
-### jayq.core
+### jayq.core [Source](https://github.com/ibdknox/jayq/blob/master/src/jayq/core.cljs)
 
-Most of the API in `jayq.core` maps 1:1 with jQuery functions. [Source](https://github.com/ibdknox/jayq/blob/master/src/jayq/core.cljs)
+Most of the API in `jayq.core` maps 1:1 with jQuery functions.
 
 ```clojure
 (ns myapp
