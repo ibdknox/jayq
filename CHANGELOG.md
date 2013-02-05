@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.0
+
+* `jayq.utils/log` now returns the value it logs see https://github.com/ibdknox/jayq/pull/28
+
 ## 2.0.0 Breaking changes!
 
 * Removed `jayq.util/clj->js` and `jayq.util/map->js` as both were
