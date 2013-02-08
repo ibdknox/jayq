@@ -71,8 +71,8 @@
        (-lookup this k not-found))))
 
 
-(defn anim [elem props dur]
-  (.animate elem (clj->js props) dur))
+(defn anim [$elem props dur]
+  (.animate $elem (clj->js props) dur))
 
 (defn text
   ([$elem]
