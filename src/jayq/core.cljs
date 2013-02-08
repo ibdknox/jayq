@@ -106,9 +106,9 @@
 
 (defn data
   ([$elem k v]
-     (. $elem (data (name k) v)))
+     (.data $elem (name k) v))
   ([$elem x]
-     (. $elem (data (clj->js x)))))
+     (.data $elem (clj->js x))))
 
 (defn add-class [$elem cl]
   (.addClass $elem (name cl)))
@@ -269,11 +269,19 @@
 (defn serialize [$elem]
   (.serialize $elem))
 
-(defn queue [$elem callback]
-  (. $elem (queue callback)))
+(defn queue
+  ([$elem x y]
+     (.queue $elem x y))
+  ([$elem x]
+     (.queue $elem x))
+  ([$elem]
+     (.queue $elem)))
 
-(defn dequeue [elem]
-  (. ($ elem) (dequeue)))
+(defn dequeue
+  ([$elem queue-name]
+     (.dequeue $elem queue-name))
+  ([$elem]
+     (.dequeue $elem)))
 
 (defn document-ready [func]
   (.ready ($ js/document) func))
