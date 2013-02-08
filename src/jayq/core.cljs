@@ -88,12 +88,21 @@
 
 (defn attr
   ([$elem n v]
-     (. $elem (attr (name n) v)))
+     (.attr $elem (name n) v))
   ([$elem x]
-     (. $elem (attr (clj->js x)))))
+     (.attr $elem (clj->js x))))
+
+(defn prop
+  ([$elem n v]
+     (.prop $elem (name n) v))
+  ([$elem x]
+     (.prop $elem (clj->js x))))
 
 (defn remove-attr [$elem a]
   (.removeAttr $elem (name a)))
+
+(defn remove-prop [$elem a]
+  (.removeProp $elem (name a)))
 
 (defn data
   ([$elem k v]
