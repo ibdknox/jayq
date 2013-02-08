@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.2.0
+
+* Added `jayq.core/prop`
+
+* Added missing signatures of queue/dequeue and fix first arg on
+  dequeue (it should be a jquery object instance instead of an HTMLElement)
+
 ## 2.1.0
 
 * `jayq.utils/log` now returns the value it logs see https://github.com/ibdknox/jayq/pull/28
