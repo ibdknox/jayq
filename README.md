@@ -136,7 +136,7 @@ If you're using advanced Clojurescript compilation you'll need to
 reference a jQuery externs file.
 
 You can find externs files from the
-[closure-compiler repository](http://code.google.com/p/closure-compiler/source/browse/trunk/contrib/externs)
+[closure-compiler repository](http://code.google.com/p/closure-compiler/source/browse/#git%2Fcontrib%2Fexterns)
 for a specific jQuery version.
 
 Add this to your compilation options (assuming that your put the
