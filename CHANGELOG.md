@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.3.0
+
+* Added `jayq.core/replace-with`
+
 ## 2.2.0
 
 * Added `jayq.core/prop`
