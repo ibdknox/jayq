@@ -149,6 +149,10 @@
 (defn insert-after [$elem target]
   (.insertAfter $elem (->selector target)))
 
+(defn replace-with
+  [$elem content]
+  (.replaceWith $elem content))
+
 (defn remove [$elem]
   (.remove $elem))
 
