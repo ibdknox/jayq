@@ -255,11 +255,13 @@
 (defn clone [$elem]
   (.clone $elem))
 
-(defn inner
+(defn html
   ([$elem v]
      (.html $elem v))
   ([$elem]
      (.html $elem)))
+
+(def ^{:deprecated "2.4.0"} inner html)
 
 (defn empty [$elem]
   (.empty $elem))
@@ -344,7 +346,7 @@
 (defn read
   "Reads clojure data from element content (preferably a script tag with type=edn/clojure)"
   [$elem]
-  (-> $elem inner reader/read-string))
+  (-> $elem html reader/read-string))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Events
