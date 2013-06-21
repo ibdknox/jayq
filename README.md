@@ -55,13 +55,13 @@ Most of the API in `jayq.core` maps 1:1 with jQuery functions.
 
 ```clojure
 (ns myapp
-  (:use [jayq.core :only [$ css inner]]))
+  (:use [jayq.core :only [$ css html]]))
 
 (def $interface ($ :#interface))
 
 (-> $interface
   (css {:background "blue"})
-  (inner "Loading!"))
+  (html "Loading!"))
 
 ```
 
