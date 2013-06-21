@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.4.0
+
+* Added `jayq.core/html` and make `jayq.core/inner` an alias to it and
+  deprecate.
+
 ## 2.3.0
 
 * Added `jayq.core/replace-with`
