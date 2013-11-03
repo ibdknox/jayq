@@ -107,10 +107,8 @@
 (defn data
   ([$elem]
      (.data $elem))
-  ([$elem k]
-     (if (map? k)
-         (.data $elem (clj->js k)) 
-         (.data $elem (name k))))
+  ([$elem k] 
+   (.data $elem (clj->js k)))
   ([$elem k v]
      (.data $elem (name k) (clj->js v))))
 
