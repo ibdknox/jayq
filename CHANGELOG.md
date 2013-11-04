@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.5.0
+
+* Encode value in  `(data x val)` using `clj->js`
+
 ## 2.4.0
 
 * Added `jayq.core/html` and make `jayq.core/inner` an alias to it and
