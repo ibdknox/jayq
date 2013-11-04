@@ -105,10 +105,12 @@
   (.removeProp $elem (name a)))
 
 (defn data
+  ([$elem]
+     (.data $elem))
+  ([$elem k] 
+   (.data $elem (clj->js k)))
   ([$elem k v]
-     (.data $elem (name k) v))
-  ([$elem x]
-     (.data $elem (clj->js x))))
+     (.data $elem (name k) (clj->js v))))
 
 (defn add-class [$elem cl]
   (.addClass $elem (name cl)))
