@@ -458,8 +458,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-(def $deferred $/Deferred)
-(def $when $/when)
+(def $deferred js/jQuery.Deferred)
+(def $when js/jQuery.when)
 
 (defn then
   ([deferred done-fn fail-fn]
