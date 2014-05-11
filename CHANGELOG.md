@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.5.1
+
+* Fixes for warnings with newer versions of the Clojurescript compiler
+
 ## 2.5.0
 
 * Encode value in  `(data x val)` using `clj->js`
