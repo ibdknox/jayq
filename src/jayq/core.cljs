@@ -115,8 +115,11 @@
 (defn add-class [$elem cl]
   (.addClass $elem (name cl)))
 
-(defn remove-class [$elem cl]
-  (.removeClass $elem (name cl)))
+(defn remove-class 
+  ([$elem]
+   (.removeClass $elem))
+  ([$elem cl]
+   (.removeClass $elem (name cl))))
 
 (defn toggle-class [$elem cl]
   (.toggleClass $elem (name cl)))
