@@ -121,8 +121,11 @@
   ([$elem cl]
    (.removeClass $elem (name cl))))
 
-(defn toggle-class [$elem cl]
-  (.toggleClass $elem (name cl)))
+(defn toggle-class
+  ([$elem cl]
+   (.toggleClass $elem (name cl)))
+  ([$elem cl switch]
+   (.toggleClass $elem (name cl) (boolean switch))))
 
 (defn has-class [$elem cl]
   (.hasClass $elem (name cl)))
