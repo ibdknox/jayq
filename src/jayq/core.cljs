@@ -331,7 +331,8 @@
         (#(if ct
             (assoc % :contentType ct)
             %))
-        (#(if (clj-content-type? ct)
+        (#(if (and ct
+                   (clj-content-type? ct))
             (assoc % :data (pr-str data))
             %)))))
 
