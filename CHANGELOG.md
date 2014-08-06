@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.5.2
+
+* Merge in a couple small pull requests. See commit log for details.
+
 ## 2.5.1
 
 * Fixes for warnings with newer versions of the Clojurescript compiler
