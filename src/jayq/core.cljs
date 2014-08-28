@@ -70,9 +70,8 @@
     ([this k not-found]
        (-lookup this k not-found))))
 
-
-(defn anim [$elem props dur]
-  (.animate $elem (clj->js props) dur))
+(defn anim [$elem props & [speed on-finish]]
+  (.animate $elem (clj->js props) speed on-finish))
 
 (defn text
   ([$elem]
