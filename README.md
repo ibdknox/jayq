@@ -41,7 +41,7 @@ for us to build exactly that.
 Add the following to your `project.clj`
 
 ```clojure
-[jayq "2.5.1"]
+[jayq "2.5.2"]
 ```
 Note: If you are upgrading to a major version be sure to check the
 [changelog](https://github.com/ibdknox/jayq/blob/master/CHANGELOG.md)
@@ -136,7 +136,7 @@ If you're using advanced Clojurescript compilation you'll need to
 reference a jQuery externs file.
 
 You can find externs files from the
-[closure-compiler repository](http://code.google.com/p/closure-compiler/source/browse/#git%2Fcontrib%2Fexterns)
+[closure-compiler repository](https://github.com/google/closure-compiler/tree/master/contrib/externs)
 for a specific jQuery version.
 
 Add this to your compilation options (assuming that your put the

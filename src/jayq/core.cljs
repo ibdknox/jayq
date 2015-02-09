@@ -70,9 +70,8 @@
     ([this k not-found]
        (-lookup this k not-found))))
 
-
-(defn anim [$elem props dur]
-  (.animate $elem (clj->js props) dur))
+(defn anim [$elem props & [speed on-finish]]
+  (.animate $elem (clj->js props) speed on-finish))
 
 (defn text
   ([$elem]
@@ -115,11 +114,17 @@
 (defn add-class [$elem cl]
   (.addClass $elem (name cl)))
 
-(defn remove-class [$elem cl]
-  (.removeClass $elem (name cl)))
+(defn remove-class 
+  ([$elem]
+   (.removeClass $elem))
+  ([$elem cl]
+   (.removeClass $elem (name cl))))
 
-(defn toggle-class [$elem cl]
-  (.toggleClass $elem (name cl)))
+(defn toggle-class
+  ([$elem cl]
+   (.toggleClass $elem (name cl)))
+  ([$elem cl switch]
+   (.toggleClass $elem (name cl) (boolean switch))))
 
 (defn has-class [$elem cl]
   (.hasClass $elem (name cl)))
@@ -325,7 +330,8 @@
         (#(if ct
             (assoc % :contentType ct)
             %))
-        (#(if (clj-content-type? ct)
+        (#(if (and ct
+                   (clj-content-type? ct))
             (assoc % :data (pr-str data))
             %)))))
 
@@ -349,6 +355,8 @@
   "Reads clojure data from element content (preferably a script tag with type=edn/clojure)"
   [$elem]
   (-> $elem html reader/read-string))
+
+(def $contains js/jQuery.contains)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Events
@@ -552,3 +560,4 @@
    :bind (fn [x f]
            (done (ajax x) f))
    :zero identity})
+
