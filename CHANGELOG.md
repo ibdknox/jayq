@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.5.4
+
+* Support $.contains function
+
+## 2.5.3
+
+* Add a few more user contributed patches
+
 ## 2.5.2
 
 * Merge in a couple small pull requests. See commit log for details.
