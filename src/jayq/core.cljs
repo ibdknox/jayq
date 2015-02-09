@@ -356,6 +356,8 @@
   [$elem]
   (-> $elem html reader/read-string))
 
+(def $contains js/jQuery.contains)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Events
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -558,3 +560,4 @@
    :bind (fn [x f]
            (done (ajax x) f))
    :zero identity})
+
