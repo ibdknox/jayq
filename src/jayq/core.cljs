@@ -21,6 +21,9 @@
   ([sel context]
      (js/jQuery (->selector sel) context)))
 
+(defn jquery?
+  [v] (= (type v) js/jQuery))
+
 (extend-type js/jQuery
 
   ISeqable
