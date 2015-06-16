@@ -1,5 +1,7 @@
 # jayq
 
+[![Clojars Project](http://clojars.org/jayq/latest-version.svg)](http://clojars.org/jayq)
+
 A jQuery wrapper for ClojureScript.
 
 ## Wait a second.. I thought we weren't supposed to use jQuery?
